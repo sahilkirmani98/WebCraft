@@ -1,0 +1,2440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="WebCraft — Professional websites for Indian small businesses in 24 hours. Starting at just ₹999."/>
+<title>WebCraft — ₹999 Websites for Small Businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet"/>
+<style>
+/* ══════════════════════════════════════════
+   ROOT & THEME SYSTEM
+══════════════════════════════════════════ */
+:root {
+  --accent: #2563eb;
+  --accent-2: #7c3aed;
+  --accent-light: #eff6ff;
+  --accent-dark: #1d4ed8;
+  --accent-glow: rgba(37,99,235,0.18);
+  --bg: #ffffff;
+  --surface: #f8fafc;
+  --surface-2: #f1f5f9;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --text-2: #475569;
+  --text-3: #94a3b8;
+  --wa: #25d366;
+  --wa-dark: #128C7E;
+  --radius: 18px;
+  --shadow: 0 4px 24px rgba(15,23,42,0.07);
+  --shadow-lg: 0 16px 56px rgba(15,23,42,0.13);
+  --t: 0.35s cubic-bezier(0.4,0,0.2,1);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+body.theme-green   { --accent:#16a34a; --accent-2:#0d9488; --accent-light:#f0fdf4; --accent-dark:#15803d; --accent-glow:rgba(22,163,74,0.18); }
+body.theme-blackgold { --accent:#b45309; --accent-2:#854d0e; --accent-light:#fffbeb; --accent-dark:#92400e; --accent-glow:rgba(180,83,9,0.18); }
+body.theme-orange  { --accent:#ea580c; --accent-2:#dc2626; --accent-light:#fff7ed; --accent-dark:#c2410c; --accent-glow:rgba(234,88,12,0.18); }
+body.theme-rose    { --accent:#e11d48; --accent-2:#9f1239; --accent-light:#fff1f2; --accent-dark:#be123c; --accent-glow:rgba(225,29,72,0.18); }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; outline: none; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+/* ══════════════════════════════════════════
+   TOPBAR
+══════════════════════════════════════════ */
+.topbar {
+  background: var(--accent);
+  color: #fff;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  letter-spacing: 0.01em;
+}
+.topbar a { color: #fff; font-weight: 700; text-decoration: underline; }
+
+/* ══════════════════════════════════════════
+   NAV
+══════════════════════════════════════════ */
+nav {
+  position: sticky;
+  top: 38px;
+  z-index: 150;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  transition: box-shadow var(--t);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.45rem;
+  color: var(--text);
+  letter-spacing: -0.03em;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-2); transition: color var(--t); }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta {
+  background: var(--accent);
+  color: #fff !important;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600 !important;
+  font-size: 0.82rem !important;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--t), transform var(--t) !important;
+}
+.nav-cta:hover { background: var(--accent-dark) !important; transform: translateY(-1px); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--t); }
+.mobile-nav {
+  display: none; position: fixed;
+  top: 102px; left: 0; right: 0;
+  background: #fff; border-bottom: 1px solid var(--border);
+  padding: 20px 24px; z-index: 140;
+  flex-direction: column; gap: 16px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a { font-weight: 500; color: var(--text-2); font-size: 0.95rem; padding: 8px 0; border-bottom: 1px solid var(--border); }
+
+/* ══════════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════════ */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 12px;
+  font-weight: 600; font-size: 0.95rem;
+  transition: all var(--t); cursor: pointer; font-family: var(--font-body);
+}
+.btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 16px var(--accent-glow); }
+.btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 10px 28px var(--accent-glow); }
+.btn-wa { background: var(--wa); color: #fff; box-shadow: 0 4px 16px rgba(37,211,102,0.25); }
+.btn-wa:hover { background: var(--wa-dark); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,211,102,0.35); }
+.btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+.btn-outline:hover { background: var(--accent-light); transform: translateY(-2px); }
+.btn-lg { padding: 17px 36px; font-size: 1rem; border-radius: 14px; }
+.btn-sm { padding: 10px 20px; font-size: 0.82rem; border-radius: 10px; }
+
+/* ══════════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════════ */
+section { padding: 88px 0; }
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.section-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent-light); color: var(--accent);
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; padding: 6px 14px;
+  border-radius: 100px; margin-bottom: 18px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 800; font-size: clamp(1.9rem, 4vw, 2.8rem);
+  line-height: 1.1; color: var(--text); margin-bottom: 16px;
+  letter-spacing: -0.03em;
+}
+.section-sub { font-size: 1rem; color: var(--text-2); line-height: 1.75; max-width: 520px; }
+.text-center { text-align: center; }
+.text-center .section-sub { margin: 0 auto; }
+
+/* ══════════════════════════════════════════
+   HERO — DRAMATIC UPGRADE
+══════════════════════════════════════════ */
+.hero {
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  background: #040b1a;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0 60px;
+}
+
+/* Animated mesh gradient */
+.hero-mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(37,99,235,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 70%, rgba(124,58,237,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 60% 20%, rgba(37,211,102,0.08) 0%, transparent 50%);
+  animation: meshPulse 8s ease-in-out infinite alternate;
+}
+@keyframes meshPulse {
+  0% { opacity: 0.8; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.06); }
+}
+
+/* Grid overlay */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+/* Floating orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  animation: orbFloat 10s ease-in-out infinite alternate;
+}
+.orb-1 { width: 320px; height: 320px; background: rgba(37,99,235,0.25); top: -80px; right: 10%; animation-delay: 0s; }
+.orb-2 { width: 220px; height: 220px; background: rgba(124,58,237,0.2); bottom: 10%; left: 5%; animation-delay: -3s; }
+.orb-3 { width: 160px; height: 160px; background: rgba(37,211,102,0.12); top: 40%; right: 30%; animation-delay: -5s; }
+@keyframes orbFloat {
+  0% { transform: translate(0,0) scale(1); }
+  100% { transform: translate(20px, -30px) scale(1.1); }
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  padding: 8px 18px; border-radius: 100px;
+  font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.8);
+  margin-bottom: 28px;
+}
+.hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--wa); animation: blink 1.5s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  line-height: 1.05;
+  color: #ffffff;
+  margin-bottom: 24px;
+  letter-spacing: -0.04em;
+}
+.hero h1 .gradient-text {
+  background: linear-gradient(135deg, #60a5fa, #a78bfa, #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero h1 .price-tag {
+  display: inline-block;
+  background: var(--accent);
+  -webkit-text-fill-color: #fff;
+  color: #fff;
+  background-clip: initial;
+  padding: 4px 16px;
+  border-radius: 10px;
+  font-size: 0.85em;
+  vertical-align: middle;
+  box-shadow: 0 4px 20px var(--accent-glow);
+  animation: pricePop 2s ease-in-out infinite;
+}
+@keyframes pricePop {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+/* Typing animation */
+.hero-typing-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.hero-typing-label { font-size: 1rem; color: rgba(255,255,255,0.5); font-weight: 400; }
+#typedText {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #60a5fa;
+}
+.cursor { display: inline-block; width: 2px; height: 1.1em; background: #60a5fa; margin-left: 2px; animation: cursorBlink 0.8s step-end infinite; vertical-align: text-bottom; }
+@keyframes cursorBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.hero-desc {
+  font-size: 1.05rem; color: rgba(255,255,255,0.65);
+  line-height: 1.8; margin-bottom: 36px; max-width: 460px;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+.hero-trust { display: flex; gap: 24px; flex-wrap: wrap; }
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.8rem; color: rgba(255,255,255,0.55); font-weight: 500;
+}
+.trust-item .icon { font-size: 1rem; }
+
+/* ─── LIVE PREVIEW PANEL ─── */
+.live-preview {
+  position: relative;
+}
+.preview-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.preview-tab {
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--t);
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.preview-tab.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+.preview-tab:hover:not(.active) {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.8);
+}
+
+.browser-chrome {
+  background: #1e2235;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+}
+.browser-top {
+  background: #151827;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.b-dots { display: flex; gap: 6px; }
+.b-dots span { width: 10px; height: 10px; border-radius: 50%; }
+.b-dots span:nth-child(1) { background: #ff5f57; }
+.b-dots span:nth-child(2) { background: #febc2e; }
+.b-dots span:nth-child(3) { background: #28c840; }
+.b-url {
+  flex: 1; background: #0f1117; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px; padding: 5px 12px;
+  font-size: 0.7rem; color: rgba(255,255,255,0.35); font-family: monospace;
+}
+
+.template-screen {
+  display: none;
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+.template-screen.active { display: block; }
+
+/* ── Clinic Preview ── */
+.ts-clinic { background: #f0f7ff; }
+.ts-clinic .ts-nav { background: #1e3a8a; display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; }
+.ts-clinic .ts-logo { color: #fff; font-weight: 700; font-size: 0.85rem; }
+.ts-clinic .ts-nav-links { display: flex; gap: 10px; }
+.ts-clinic .ts-nav-links span { display: block; height: 5px; width: 30px; background: rgba(255,255,255,0.4); border-radius: 3px; }
+.ts-clinic .ts-nav-links span.last { width: 20px; }
+.ts-clinic .ts-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 20px 18px; }
+.ts-clinic .ts-hero-txt h3 { font-size: 0.9rem; font-weight: 800; color: #1e3a8a; margin-bottom: 6px; }
+.ts-clinic .ts-hero-txt p { font-size: 0.65rem; color: #475569; margin-bottom: 10px; }
+.ts-clinic .ts-cta { display: inline-block; background: #2563eb; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 5px 12px; border-radius: 6px; }
+.ts-clinic .ts-hero-img { background: #dbeafe; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; }
+.ts-clinic .ts-services { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; padding: 0 18px 18px; }
+.ts-clinic .ts-service-card { background: #fff; border-radius: 8px; padding: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+.ts-clinic .ts-service-card .ico { font-size: 1.2rem; margin-bottom: 4px; }
+.ts-clinic .ts-service-card .lbl { font-size: 0.6rem; font-weight: 600; color: #1e3a8a; }
+.ts-clinic .ts-service-card .sub { font-size: 0.55rem; color: #64748b; margin-top: 2px; }
+
+/* ── Restaurant Preview ── */
+.ts-restaurant { background: #0a0a0a; }
+.ts-restaurant .ts-nav { background: #0a0a0a; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; }
+.ts-restaurant .ts-logo { color: #f59e0b; font-weight: 800; font-size: 0.9rem; }
+.ts-restaurant .ts-nav-links { display: flex; gap: 10px; }
+.ts-restaurant .ts-nav-links span { display: block; height: 5px; width: 28px; background: rgba(255,255,255,0.2); border-radius: 3px; }
+.ts-restaurant .ts-hero { background: linear-gradient(135deg, #1c0a00, #3d1a00); padding: 24px 18px; display: flex; align-items: center; gap: 16px; }
+.ts-restaurant .ts-hero-txt h3 { font-size: 0.9rem; font-weight: 800; color: #fde68a; margin-bottom: 6px; }
+.ts-restaurant .ts-hero-txt p { font-size: 0.62rem; color: rgba(255,255,255,0.6); margin-bottom: 10px; }
+.ts-restaurant .ts-cta { display: inline-block; background: #f59e0b; color: #000; font-size: 0.6rem; font-weight: 800; padding: 5px 12px; border-radius: 6px; }
+.ts-restaurant .ts-hero-img { font-size: 3rem; }
+.ts-restaurant .ts-menu { padding: 14px 18px; }
+.ts-restaurant .ts-menu-title { font-size: 0.65rem; font-weight: 700; color: #f59e0b; margin-bottom: 8px; letter-spacing: 0.08em; text-transform: uppercase; }
+.ts-restaurant .ts-dishes { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+.ts-restaurant .ts-dish { background: #1a1a1a; border-radius: 8px; padding: 8px; text-align: center; }
+.ts-restaurant .ts-dish .ico { font-size: 1.4rem; margin-bottom: 4px; }
+.ts-restaurant .ts-dish .name { font-size: 0.55rem; color: rgba(255,255,255,0.7); }
+.ts-restaurant .ts-dish .price { font-size: 0.58rem; color: #f59e0b; font-weight: 700; }
+
+/* ── Shop Preview ── */
+.ts-shop { background: #fff; }
+.ts-shop .ts-nav { background: #fff; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; }
+.ts-shop .ts-logo { color: #065f46; font-weight: 800; font-size: 0.9rem; }
+.ts-shop .ts-nav-links { display: flex; gap: 8px; align-items: center; }
+.ts-shop .ts-nav-links span { display: block; height: 5px; width: 28px; background: #d1d5db; border-radius: 3px; }
+.ts-shop .ts-nav-links .cart { width: 20px; height: 20px; background: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; }
+.ts-shop .ts-banner { background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; }
+.ts-shop .ts-banner-txt h3 { font-size: 0.8rem; font-weight: 800; color: #065f46; margin-bottom: 4px; }
+.ts-shop .ts-banner-txt p { font-size: 0.62rem; color: #047857; margin-bottom: 8px; }
+.ts-shop .ts-cta { display: inline-block; background: #16a34a; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 5px 12px; border-radius: 6px; }
+.ts-shop .ts-banner-img { font-size: 2.4rem; }
+.ts-shop .ts-products { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; padding: 14px 18px; }
+.ts-shop .ts-product { background: #f9fafb; border-radius: 8px; padding: 8px; }
+.ts-shop .ts-product .ico { font-size: 1.3rem; margin-bottom: 4px; text-align: center; }
+.ts-shop .ts-product .name { font-size: 0.55rem; color: #374151; font-weight: 600; }
+.ts-shop .ts-product .price { font-size: 0.6rem; color: #16a34a; font-weight: 700; }
+
+/* ── Service Preview ── */
+.ts-service { background: #0f0a1e; }
+.ts-service .ts-nav { background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; }
+.ts-service .ts-logo { color: #c084fc; font-weight: 800; font-size: 0.85rem; }
+.ts-service .ts-nav-links { display: flex; gap: 10px; }
+.ts-service .ts-nav-links span { display: block; height: 5px; width: 28px; background: rgba(255,255,255,0.15); border-radius: 3px; }
+.ts-service .ts-hero { padding: 24px 18px; text-align: center; }
+.ts-service .ts-hero h3 { font-size: 0.9rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.ts-service .ts-hero p { font-size: 0.62rem; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+.ts-service .ts-cta { display: inline-block; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-size: 0.6rem; font-weight: 700; padding: 6px 16px; border-radius: 20px; }
+.ts-service .ts-services { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; padding: 14px 18px; }
+.ts-service .ts-scard { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 10px; text-align: center; }
+.ts-service .ts-scard .ico { font-size: 1.4rem; margin-bottom: 4px; }
+.ts-service .ts-scard .name { font-size: 0.58rem; color: rgba(255,255,255,0.7); font-weight: 600; }
+
+/* ── Salon Preview ── */
+.ts-salon { background: #fdf2f8; }
+.ts-salon .ts-nav { background: #831843; display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; }
+.ts-salon .ts-logo { color: #fce7f3; font-weight: 800; font-size: 0.9rem; }
+.ts-salon .ts-nav-links { display: flex; gap: 10px; }
+.ts-salon .ts-nav-links span { display: block; height: 5px; width: 28px; background: rgba(255,255,255,0.3); border-radius: 3px; }
+.ts-salon .ts-hero { background: linear-gradient(135deg, #fce7f3, #fdf2f8); padding: 20px 18px; display: flex; align-items: center; gap: 16px; }
+.ts-salon .ts-hero-txt h3 { font-size: 0.85rem; font-weight: 800; color: #831843; margin-bottom: 6px; }
+.ts-salon .ts-hero-txt p { font-size: 0.62rem; color: #9d174d; margin-bottom: 10px; }
+.ts-salon .ts-cta { display: inline-block; background: #be185d; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 5px 12px; border-radius: 6px; }
+.ts-salon .ts-hero-img { font-size: 2.8rem; }
+.ts-salon .ts-services { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; padding: 0 18px 18px; }
+.ts-salon .ts-svc { background: #fff; border-radius: 8px; padding: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); text-align: center; }
+.ts-salon .ts-svc .ico { font-size: 1.3rem; margin-bottom: 4px; }
+.ts-salon .ts-svc .lbl { font-size: 0.58rem; font-weight: 700; color: #831843; }
+.ts-salon .ts-svc .price { font-size: 0.55rem; color: #be185d; }
+
+/* ── School/Tutor Preview ── */
+.ts-tutor { background: #fffbeb; }
+.ts-tutor .ts-nav { background: #1e3a8a; display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; }
+.ts-tutor .ts-logo { color: #fde68a; font-weight: 800; font-size: 0.85rem; }
+.ts-tutor .ts-nav-links { display: flex; gap: 10px; }
+.ts-tutor .ts-nav-links span { display: block; height: 5px; width: 28px; background: rgba(255,255,255,0.3); border-radius: 3px; }
+.ts-tutor .ts-hero { background: linear-gradient(135deg, #1e3a8a 40%, #1d4ed8); padding: 20px 18px; display: flex; align-items: center; gap: 16px; }
+.ts-tutor .ts-hero-txt h3 { font-size: 0.85rem; font-weight: 800; color: #fde68a; margin-bottom: 6px; }
+.ts-tutor .ts-hero-txt p { font-size: 0.62rem; color: rgba(255,255,255,0.65); margin-bottom: 10px; }
+.ts-tutor .ts-cta { display: inline-block; background: #f59e0b; color: #000; font-size: 0.6rem; font-weight: 800; padding: 5px 12px; border-radius: 6px; }
+.ts-tutor .ts-hero-img { font-size: 2.6rem; }
+.ts-tutor .ts-subjects { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; padding: 14px 18px; }
+.ts-tutor .ts-sub { background: #fff; border-radius: 8px; padding: 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+.ts-tutor .ts-sub .ico { font-size: 1.2rem; margin-bottom: 4px; }
+.ts-tutor .ts-sub .lbl { font-size: 0.55rem; font-weight: 700; color: #1e3a8a; }
+
+/* Float badge */
+.preview-badge {
+  position: absolute;
+  bottom: -12px; right: -12px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px 16px;
+  box-shadow: var(--shadow-lg);
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.78rem;
+  z-index: 5;
+  border: 1px solid var(--border);
+}
+.preview-badge-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.preview-badge strong { display: block; font-weight: 700; color: var(--text); font-size: 0.82rem; }
+.preview-badge span { color: var(--text-3); font-size: 0.72rem; }
+
+/* ══════════════════════════════════════════
+   HOW IT WORKS
+══════════════════════════════════════════ */
+.steps-bg { background: var(--surface); }
+.steps-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 20px;
+  margin-top: 56px; position: relative;
+}
+.steps-connector {
+  position: absolute;
+  top: 36px; left: 12.5%; right: 12.5%;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent), var(--accent-2), transparent);
+  z-index: 0;
+}
+.step-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px 22px;
+  text-align: center; position: relative; z-index: 1;
+  transition: all var(--t);
+}
+.step-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+.step-num {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  font-family: var(--font-display); font-weight: 800; font-size: 1.15rem;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+.step-icon { font-size: 1.5rem; margin-bottom: 10px; }
+.step-title { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--text); margin-bottom: 8px; }
+.step-desc { font-size: 0.8rem; color: var(--text-2); line-height: 1.6; }
+
+/* ══════════════════════════════════════════
+   TEMPLATES — FULL REDESIGN
+══════════════════════════════════════════ */
+.templates-filter {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 32px;
+  margin-bottom: 40px;
+}
+.filter-btn {
+  padding: 8px 20px; border-radius: 100px; font-size: 0.78rem; font-weight: 600;
+  cursor: pointer; transition: all var(--t);
+  background: var(--surface); color: var(--text-2);
+  border: 1.5px solid var(--border);
+}
+.filter-btn.active {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+.filter-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
+.templates-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 22px;
+}
+.template-card {
+  background: var(--surface); border: 2px solid var(--border);
+  border-radius: 20px; overflow: hidden;
+  transition: all var(--t); cursor: pointer; position: relative;
+}
+.template-card.hidden { display: none; }
+.template-card.selected, .template-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-glow), var(--shadow-lg);
+  transform: translateY(-4px);
+}
+.template-card.selected .template-check { opacity: 1; transform: scale(1); }
+.template-check {
+  position: absolute; top: 14px; right: 14px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; opacity: 0; transition: all var(--t);
+  z-index: 10; box-shadow: 0 2px 8px var(--accent-glow);
+  transform: scale(0.5);
+}
+.template-preview {
+  height: 160px; display: flex; align-items: center; justify-content: center;
+  font-size: 2.8rem; position: relative; overflow: hidden;
+}
+.template-preview::before {
+  content: ''; position: absolute; inset: 0; background: inherit; opacity: 0.12;
+}
+
+/* Preview backgrounds per template */
+.tp-clinic     { background: linear-gradient(135deg, #dbeafe, #eff6ff); }
+.tp-restaurant { background: linear-gradient(135deg, #1c0a00, #3d1a00); }
+.tp-shop       { background: linear-gradient(135deg, #dcfce7, #f0fdf4); }
+.tp-service    { background: linear-gradient(135deg, #0f0a1e, #1e1040); }
+.tp-salon      { background: linear-gradient(135deg, #fce7f3, #fdf2f8); }
+.tp-tutor      { background: linear-gradient(135deg, #1e3a8a, #1d4ed8); }
+
+.template-preview .tp-emoji { position: relative; z-index: 1; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2)); }
+.template-preview-mini {
+  position: absolute; bottom: 12px; right: 12px; left: 12px;
+  z-index: 2; display: flex; gap: 5px;
+}
+.tmini-bar { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.5); }
+.tmini-bar.accent { background: var(--accent); }
+
+.template-info { padding: 18px 20px; }
+.template-name {
+  font-family: var(--font-display); font-weight: 700; font-size: 1rem;
+  color: var(--text); margin-bottom: 4px;
+}
+.template-meta { font-size: 0.77rem; color: var(--text-3); margin-bottom: 12px; }
+.template-features { display: flex; gap: 5px; flex-wrap: wrap; }
+.feature-chip {
+  background: #fff; border: 1px solid var(--border);
+  padding: 3px 9px; border-radius: 100px;
+  font-size: 0.67rem; font-weight: 500; color: var(--text-2);
+}
+.template-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 20px; background: var(--surface-2);
+  border-top: 1px solid var(--border);
+}
+.template-select-btn {
+  font-size: 0.75rem; font-weight: 700; color: var(--accent);
+  display: flex; align-items: center; gap: 5px;
+  transition: gap var(--t);
+}
+.template-card:hover .template-select-btn { gap: 8px; }
+.template-select-btn::after { content: '→'; }
+.template-popular {
+  font-size: 0.65rem; font-weight: 700; background: var(--accent);
+  color: #fff; padding: 2px 8px; border-radius: 100px;
+}
+
+/* ══════════════════════════════════════════
+   THEMES — ENHANCED
+══════════════════════════════════════════ */
+.themes-bg { background: var(--surface); }
+.themes-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 48px;
+}
+.theme-card {
+  border: 2px solid var(--border); border-radius: 16px; overflow: hidden;
+  cursor: pointer; transition: all var(--t); position: relative;
+}
+.theme-card:hover, .theme-card.selected { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.theme-card.selected { border-color: var(--theme-color); box-shadow: 0 0 0 4px rgba(0,0,0,0.06), var(--shadow); }
+.theme-card.selected .theme-check { opacity: 1; transform: scale(1); }
+.theme-check {
+  position: absolute; top: 8px; right: 8px;
+  width: 22px; height: 22px; border-radius: 50%; color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 0.68rem;
+  opacity: 0; transition: all var(--t); z-index: 5; transform: scale(0.5);
+}
+.theme-swatch { height: 72px; position: relative; overflow: hidden; }
+.theme-label { padding: 12px 12px 14px; background: #fff; }
+.theme-name { font-family: var(--font-display); font-weight: 700; font-size: 0.8rem; color: var(--text); margin-bottom: 2px; }
+.theme-use { font-size: 0.67rem; color: var(--text-3); }
+
+/* ══════════════════════════════════════════
+   PRICING
+══════════════════════════════════════════ */
+.pricing-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 52px; max-width: 860px; margin-left: auto; margin-right: auto; align-items: start; }
+.pricing-card {
+  background: #fff; border: 2px solid var(--border);
+  border-radius: 24px; padding: 40px 36px;
+  position: relative; overflow: hidden; transition: all var(--t);
+}
+.pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.pricing-card.featured {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 6px var(--accent-glow), var(--shadow-lg);
+  transform: scale(1.02);
+}
+.pricing-card.featured:hover { transform: scale(1.02) translateY(-4px); }
+.pricing-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: var(--accent);
+}
+.pricing-badge {
+  display: inline-block; background: var(--accent); color: #fff;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 4px 14px;
+  border-radius: 100px; margin-bottom: 20px;
+}
+.pricing-price {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 3.6rem; color: var(--text); line-height: 1; margin-bottom: 6px;
+  letter-spacing: -0.04em;
+}
+.pricing-price sup { font-size: 1.5rem; vertical-align: super; }
+.pricing-period { font-size: 0.85rem; color: var(--text-3); margin-bottom: 4px; }
+.pricing-original { font-size: 0.82rem; color: var(--text-3); text-decoration: line-through; margin-bottom: 28px; }
+.pricing-features { list-style: none; margin-bottom: 30px; }
+.pricing-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 9px 0; border-bottom: 1px solid var(--border);
+  font-size: 0.875rem; color: var(--text-2);
+}
+.pricing-features li:last-child { border-bottom: none; }
+.pricing-features li .check {
+  width: 18px; height: 18px; flex-shrink: 0; border-radius: 50%;
+  background: var(--accent-light); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.6rem; font-weight: 700; margin-top: 2px;
+}
+.pricing-plan-name { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; margin-bottom: 16px; color: var(--text); }
+
+/* ══════════════════════════════════════════
+   SOCIAL PROOF
+══════════════════════════════════════════ */
+.proof-bg {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  position: relative; overflow: hidden;
+}
+.proof-bg::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.proof-inner { text-align: center; color: #fff; position: relative; z-index: 1; }
+.proof-inner .section-tag { background: rgba(255,255,255,0.15); color: #fff; }
+.proof-inner .section-title { color: #fff; }
+.proof-inner .section-sub { color: rgba(255,255,255,0.8); margin: 0 auto; }
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 52px; }
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 2.8rem; color: #fff; line-height: 1; margin-bottom: 6px; letter-spacing: -0.04em;
+}
+.stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.75); font-weight: 500; }
+
+/* ══════════════════════════════════════════
+   TESTIMONIALS — CAROUSEL
+══════════════════════════════════════════ */
+.testimonials-wrap {
+  margin-top: 52px;
+  position: relative;
+  overflow: hidden;
+}
+.testimonials-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+.testimonial-card {
+  min-width: calc(33.33% - 14px);
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 18px; padding: 28px 24px; flex-shrink: 0;
+  transition: all var(--t);
+}
+.testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+.t-stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 14px; letter-spacing: 2px; }
+.t-text { font-size: 0.875rem; color: var(--text-2); line-height: 1.75; margin-bottom: 18px; font-style: italic; }
+.t-author { display: flex; align-items: center; gap: 12px; }
+.t-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; background: var(--accent-light); flex-shrink: 0;
+}
+.t-name { font-weight: 700; font-size: 0.85rem; color: var(--text); }
+.t-role { font-size: 0.73rem; color: var(--text-3); margin-top: 1px; }
+
+.testimonial-controls {
+  display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 32px;
+}
+.t-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--surface); border: 1.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; cursor: pointer; transition: all var(--t); color: var(--text-2);
+}
+.t-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.t-dots { display: flex; gap: 6px; }
+.t-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all var(--t); }
+.t-dot.active { background: var(--accent); width: 20px; border-radius: 3px; }
+
+/* ══════════════════════════════════════════
+   BEFORE / AFTER COMPARISON
+══════════════════════════════════════════ */
+.compare-section { background: var(--surface); }
+.compare-wrap {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 52px;
+}
+.compare-card {
+  border-radius: 20px; overflow: hidden;
+  border: 2px solid var(--border); box-shadow: var(--shadow);
+}
+.compare-label {
+  display: flex; align-items: center; gap: 8px;
+  padding: 14px 20px;
+  font-family: var(--font-display); font-weight: 700; font-size: 0.9rem;
+}
+.compare-label.before { background: #fef2f2; color: #991b1b; border-bottom: 2px solid #fecaca; }
+.compare-label.after { background: var(--accent-light); color: var(--accent-dark); border-bottom: 2px solid rgba(37,99,235,0.2); }
+.compare-content { padding: 24px; background: #fff; }
+.compare-list { list-style: none; }
+.compare-list li {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 0; border-bottom: 1px solid var(--border);
+  font-size: 0.875rem; color: var(--text-2);
+}
+.compare-list li:last-child { border-bottom: none; }
+.compare-list li .ico { font-size: 1rem; flex-shrink: 0; }
+
+/* ══════════════════════════════════════════
+   CONTACT / ORDER FORM
+══════════════════════════════════════════ */
+.form-bg { background: var(--surface); }
+.form-wrap {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: start; margin-top: 52px;
+}
+.form-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 20px; padding: 36px 32px; box-shadow: var(--shadow);
+}
+.form-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.25rem;
+  margin-bottom: 24px; color: var(--text);
+}
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-2); margin-bottom: 7px; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 12px 16px;
+  border: 1.5px solid var(--border); border-radius: 10px;
+  font-family: inherit; font-size: 0.9rem; color: var(--text);
+  background: var(--surface); outline: none;
+  transition: border-color var(--t), box-shadow var(--t);
+  -webkit-appearance: none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); background: #fff;
+}
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-submit { width: 100%; padding: 16px; border-radius: 12px; font-size: 1rem; font-weight: 700; margin-top: 8px; font-family: var(--font-display); }
+.form-note { font-size: 0.75rem; color: var(--text-3); text-align: center; margin-top: 12px; }
+.form-wa-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 20px; padding: 36px 32px; text-align: center;
+}
+.wa-icon-big { font-size: 3rem; margin-bottom: 16px; }
+.wa-title { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; margin-bottom: 10px; color: var(--text); }
+.wa-desc { font-size: 0.875rem; color: var(--text-2); line-height: 1.7; margin-bottom: 24px; }
+.wa-btn-big {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 16px 24px; background: var(--wa); color: #fff;
+  border-radius: 14px; font-weight: 700; font-size: 1rem;
+  transition: all var(--t); box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+  margin-bottom: 20px;
+}
+.wa-btn-big:hover { background: var(--wa-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+.wa-features { text-align: left; }
+.wa-feature {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+  font-size: 0.85rem; color: var(--text-2);
+}
+.wa-feature:last-child { border-bottom: none; }
+.wa-number {
+  margin-top: 20px; padding: 14px; background: var(--surface);
+  border-radius: 10px; font-size: 0.85rem; color: var(--text-2); font-weight: 500;
+}
+.wa-number strong { color: var(--text); font-size: 1rem; }
+
+/* ══════════════════════════════════════════
+   FAQ
+══════════════════════════════════════════ */
+.faq-bg { background: var(--surface); }
+.faq-list { margin-top: 48px; max-width: 700px; margin-left: auto; margin-right: auto; }
+.faq-item {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 14px; margin-bottom: 10px; overflow: hidden;
+  transition: box-shadow var(--t), border-color var(--t);
+}
+.faq-item:hover { box-shadow: var(--shadow); border-color: var(--accent); }
+.faq-item.open { border-color: var(--accent); }
+.faq-q {
+  padding: 18px 24px; font-weight: 600; font-size: 0.92rem;
+  cursor: pointer; display: flex; justify-content: space-between;
+  align-items: center; gap: 16px; color: var(--text); transition: color var(--t);
+}
+.faq-q:hover { color: var(--accent); }
+.faq-icon { font-size: 1.1rem; color: var(--accent); flex-shrink: 0; transition: transform var(--t); }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 24px; font-size: 0.875rem; color: var(--text-2); line-height: 1.7;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
+
+/* ══════════════════════════════════════════
+   FINAL CTA
+══════════════════════════════════════════ */
+.cta-banner {
+  background: var(--text); padding: 80px 0; text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 20% 50%, rgba(37,99,235,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 50%, rgba(124,58,237,0.12) 0%, transparent 60%);
+}
+.cta-banner h2 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 3rem); color: #fff;
+  margin-bottom: 14px; letter-spacing: -0.04em; position: relative;
+}
+.cta-banner p { font-size: 1rem; color: rgba(255,255,255,0.6); margin-bottom: 40px; position: relative; }
+.cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+footer { background: #0a0f1e; padding: 56px 0 28px; }
+.footer-top {
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-logo {
+  font-family: var(--font-display); font-weight: 800; font-size: 1.5rem;
+  color: #fff; margin-bottom: 14px; letter-spacing: -0.03em;
+}
+.footer-logo span { color: var(--accent); }
+.footer-desc { font-size: 0.85rem; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 22px; }
+.footer-wa {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--wa); color: #fff; padding: 10px 18px;
+  border-radius: 10px; font-size: 0.82rem; font-weight: 600;
+  transition: all var(--t);
+}
+.footer-wa:hover { background: var(--wa-dark); transform: translateY(-2px); }
+.footer-col-title {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 18px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { font-size: 0.85rem; color: rgba(255,255,255,0.5); transition: color var(--t); }
+.footer-links a:hover { color: #fff; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.78rem; color: rgba(255,255,255,0.25); flex-wrap: wrap; gap: 8px;
+}
+
+/* ══════════════════════════════════════════
+   STICKY WA
+══════════════════════════════════════════ */
+.sticky-wa {
+  position: fixed; bottom: 24px; right: 24px; z-index: 500;
+  display: flex; align-items: center; gap: 10px;
+  background: var(--wa); color: #fff; padding: 14px 20px;
+  border-radius: 100px; font-weight: 700; font-size: 0.9rem;
+  box-shadow: 0 4px 28px rgba(37,211,102,0.45); transition: all var(--t); cursor: pointer;
+}
+.sticky-wa:hover { background: var(--wa-dark); transform: translateY(-3px); box-shadow: 0 10px 36px rgba(37,211,102,0.55); }
+.wa-pulse { width: 10px; height: 10px; border-radius: 50%; background: #fff; animation: blink 1.5s ease-in-out infinite; }
+
+/* ══════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════ */
+.toast {
+  position: fixed; bottom: 90px; right: 24px; z-index: 600;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 14px; padding: 16px 20px;
+  box-shadow: var(--shadow-lg);
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.875rem; font-weight: 600; color: var(--text);
+  transform: translateX(150%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  max-width: 280px;
+}
+.toast.show { transform: translateX(0); }
+.toast-icon { font-size: 1.4rem; flex-shrink: 0; }
+
+/* ══════════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════════ */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ══════════════════════════════════════════
+   TEMPLATE DEMO MODAL
+══════════════════════════════════════════ */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(4,11,26,0.85);
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.modal-box {
+  background: var(--bg); border-radius: 24px;
+  width: 100%; max-width: 900px;
+  max-height: 90vh; overflow: hidden;
+  display: flex; flex-direction: column;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+  transform: translateY(32px) scale(0.97);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+.modal-overlay.open .modal-box { transform: translateY(0) scale(1); }
+
+.modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 28px; border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.modal-title-wrap { display: flex; align-items: center; gap: 14px; }
+.modal-emoji { font-size: 1.8rem; }
+.modal-title { font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; color: var(--text); }
+.modal-subtitle { font-size: 0.8rem; color: var(--text-3); margin-top: 2px; }
+.modal-close {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--surface); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; cursor: pointer; color: var(--text-2);
+  transition: all var(--t); flex-shrink: 0;
+}
+.modal-close:hover { background: #fef2f2; color: #dc2626; border-color: #fecaca; }
+
+.modal-body { flex: 1; overflow-y: auto; padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 700px) { .modal-body { grid-template-columns: 1fr; } }
+
+.modal-preview-col {}
+.modal-preview-browser {
+  background: #1e2235; border-radius: 12px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+}
+.modal-browser-bar {
+  background: #151827; padding: 10px 14px;
+  display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.modal-b-dots { display: flex; gap: 5px; }
+.modal-b-dots span { width: 9px; height: 9px; border-radius: 50%; }
+.modal-b-dots span:nth-child(1) { background: #ff5f57; }
+.modal-b-dots span:nth-child(2) { background: #febc2e; }
+.modal-b-dots span:nth-child(3) { background: #28c840; }
+.modal-b-url {
+  flex: 1; background: #0f1117; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 5px; padding: 4px 10px;
+  font-size: 0.67rem; color: rgba(255,255,255,0.35); font-family: monospace;
+}
+.modal-preview-content { min-height: 320px; }
+
+.modal-info-col { display: flex; flex-direction: column; gap: 20px; }
+
+.modal-features-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 0.85rem;
+  color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em;
+}
+.modal-feature-list { list-style: none; }
+.modal-feature-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+  font-size: 0.84rem; color: var(--text-2); line-height: 1.4;
+}
+.modal-feature-list li:last-child { border-bottom: none; }
+.modal-feature-list li .mcheck {
+  width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+  background: var(--accent-light); color: var(--accent);
+  display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 700; margin-top: 2px;
+}
+.modal-badge-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.modal-badge {
+  background: var(--accent-light); color: var(--accent);
+  font-size: 0.72rem; font-weight: 600; padding: 5px 12px; border-radius: 100px;
+  border: 1px solid rgba(37,99,235,0.15);
+}
+
+.modal-footer {
+  padding: 20px 28px; border-top: 1px solid var(--border);
+  display: flex; gap: 12px; align-items: center; flex-shrink: 0; flex-wrap: wrap;
+}
+.modal-footer .btn { flex: 1; justify-content: center; min-width: 160px; }
+.modal-note { font-size: 0.73rem; color: var(--text-3); width: 100%; text-align: center; margin-top: 4px; }
+
+/* Template card — add view demo btn */
+.template-card-actions {
+  display: flex; gap: 8px; align-items: center;
+}
+.tpl-demo-btn {
+  font-size: 0.72rem; font-weight: 600; color: var(--text-3);
+  border: 1.5px solid var(--border); padding: 5px 12px;
+  border-radius: 8px; background: #fff; cursor: pointer;
+  transition: all var(--t); white-space: nowrap;
+}
+.tpl-demo-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+/* ── Pricing plan highlight ── */
+.plan-highlight {
+  background: var(--accent-light); border: 1px solid rgba(37,99,235,0.2);
+  border-radius: 10px; padding: 12px 16px; margin-bottom: 24px;
+  font-size: 0.82rem; color: var(--accent); font-weight: 500; text-align: center;
+}
+
+/* ── Smooth scroll utility ── */
+html { scroll-behavior: smooth; }
+
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .themes-grid { grid-template-columns: repeat(3, 1fr); }
+  .templates-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-wrapper { grid-template-columns: 1fr; max-width: 480px; }
+  .pricing-card.featured { transform: scale(1); }
+  .pricing-card.featured:hover { transform: translateY(-4px); }
+}
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .live-preview { order: -1; }
+  .steps-grid { grid-template-columns: repeat(2,1fr); }
+  .steps-connector { display: none; }
+  .themes-grid { grid-template-columns: repeat(2,1fr); }
+  .form-wrap { grid-template-columns: 1fr; gap: 24px; }
+  .stats-row { grid-template-columns: repeat(2,1fr); gap: 20px; }
+  .testimonial-card { min-width: calc(50% - 10px); }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .compare-wrap { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  nav { padding: 0 16px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .templates-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .themes-grid { grid-template-columns: repeat(2,1fr); }
+  .testimonial-card { min-width: calc(100% - 0px); }
+  .stats-row { grid-template-columns: repeat(2,1fr); }
+  .footer-top { grid-template-columns: 1fr; }
+  .form-card, .form-wa-card { padding: 24px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { justify-content: center; }
+  .cta-actions { flex-direction: column; align-items: center; }
+  .sticky-wa .wa-text { display: none; }
+  .sticky-wa { padding: 14px; }
+  section { padding: 60px 0; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .preview-tabs { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  🎉 Launch offer — Professional website for just <strong>₹999</strong>! Delivered in 24 hours. &nbsp;
+  <a href="https://wa.me/918494040471?text=Hi%20WebCraft%2C%20I%20need%20a%20website%20for%20my%20business." target="_blank">Chat on WhatsApp →</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo">Web<span>Craft</span></div>
+  <ul class="nav-links">
+    <li><a href="#how">How it Works</a></li>
+    <li><a href="#templates">Templates</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li>
+      <a class="nav-cta" href="https://wa.me/918494040471?text=Hi%20WebCraft%2C%20I%20need%20a%20website%20for%20my%20business." target="_blank">
+        <span>💬</span> WhatsApp Us
+      </a>
+    </li>
+  </ul>
+  <div class="nav-hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#how" onclick="toggleMenu()">How it Works</a>
+  <a href="#templates" onclick="toggleMenu()">Templates</a>
+  <a href="#themes" onclick="toggleMenu()">Themes</a>
+  <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a class="btn btn-wa btn-sm" href="https://wa.me/918494040471?text=Hi%20WebCraft%2C%20I%20need%20a%20website%20for%20my%20business." target="_blank" style="justify-content:center">💬 Get Website on WhatsApp</a>
+</div>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <div class="dot"></div>
+          500+ businesses already online
+        </div>
+
+        <div class="hero-typing-wrap">
+          <span class="hero-typing-label">Perfect for</span>
+          <span id="typedText"></span><span class="cursor"></span>
+        </div>
+
+        <h1>Your Business<br>Website for just<br><span class="price-tag">₹999</span></h1>
+        <p class="hero-desc">
+          Professional, mobile-first websites for Indian small businesses. Choose from 6 industry templates, pick your brand color — live in 24 hours.
+        </p>
+        <div class="hero-actions">
+          <a href="https://wa.me/918494040471?text=Hi%20WebCraft%2C%20I%20need%20a%20website%20for%20my%20business." target="_blank" class="btn btn-wa btn-lg">
+            <span>💬</span> Get Website on WhatsApp
+          </a>
+          <a href="#templates" class="btn btn-outline btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.25)">
+            View Templates →
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item"><span class="icon">✅</span> No hidden fees</div>
+          <div class="trust-item"><span class="icon">⚡</span> Ready in 24 hrs</div>
+          <div class="trust-item"><span class="icon">📱</span> Mobile-first</div>
+          <div class="trust-item"><span class="icon">🔒</span> Free hosting</div>
+        </div>
+      </div>
+
+      <!-- LIVE PREVIEW -->
+      <div class="live-preview">
+        <div class="preview-tabs" id="previewTabs">
+          <div class="preview-tab active" data-screen="clinic" onclick="switchPreview(this,'clinic','yourbusiness.netlify.app')">🏥 Clinic</div>
+          <div class="preview-tab" data-screen="restaurant" onclick="switchPreview(this,'restaurant','tasteofspice.netlify.app')">🍽️ Restaurant</div>
+          <div class="preview-tab" data-screen="shop" onclick="switchPreview(this,'shop','freshmart.netlify.app')">🛍️ Shop</div>
+          <div class="preview-tab" data-screen="service" onclick="switchPreview(this,'service','profix.netlify.app')">🔧 Service</div>
+          <div class="preview-tab" data-screen="salon" onclick="switchPreview(this,'salon','bellaglam.netlify.app')">💅 Salon</div>
+          <div class="preview-tab" data-screen="tutor" onclick="switchPreview(this,'tutor','brightminds.netlify.app')">📚 Tutor</div>
+        </div>
+        <div class="browser-chrome">
+          <div class="browser-top">
+            <div class="b-dots"><span></span><span></span><span></span></div>
+            <div class="b-url" id="previewUrl">yourbusiness.netlify.app</div>
+          </div>
+
+          <!-- CLINIC -->
+          <div class="template-screen ts-clinic active" id="screen-clinic">
+            <div class="ts-nav">
+              <div class="ts-logo">🏥 CityClinic</div>
+              <div class="ts-nav-links"><span></span><span></span><span class="last"></span></div>
+            </div>
+            <div class="ts-hero">
+              <div class="ts-hero-txt">
+                <h3>Your Health,<br>Our Priority</h3>
+                <p>Trusted care, expert doctors, and same-day appointments.</p>
+                <div class="ts-cta">Book Appointment</div>
+              </div>
+              <div class="ts-hero-img">🩺</div>
+            </div>
+            <div class="ts-services">
+              <div class="ts-service-card"><div class="ico">💊</div><div class="lbl">Pharmacy</div><div class="sub">Open 24 hrs</div></div>
+              <div class="ts-service-card"><div class="ico">🔬</div><div class="lbl">Lab Tests</div><div class="sub">Same-day results</div></div>
+              <div class="ts-service-card"><div class="ico">🧠</div><div class="lbl">Specialists</div><div class="sub">15+ doctors</div></div>
+            </div>
+          </div>
+
+          <!-- RESTAURANT -->
+          <div class="template-screen ts-restaurant" id="screen-restaurant">
+            <div class="ts-nav">
+              <div class="ts-logo">🌶️ Taste of Spice</div>
+              <div class="ts-nav-links"><span></span><span></span><span></span></div>
+            </div>
+            <div class="ts-hero">
+              <div class="ts-hero-txt">
+                <h3>Authentic<br>Indian Flavours</h3>
+                <p>Fresh ingredients, traditional recipes, delivered hot.</p>
+                <div class="ts-cta">Order via WhatsApp</div>
+              </div>
+              <div class="ts-hero-img">🍛</div>
+            </div>
+            <div class="ts-menu">
+              <div class="ts-menu-title">Today's Specials</div>
+              <div class="ts-dishes">
+                <div class="ts-dish"><div class="ico">🍜</div><div class="name">Dal Makhani</div><div class="price">₹180</div></div>
+                <div class="ts-dish"><div class="ico">🫓</div><div class="name">Butter Naan</div><div class="price">₹40</div></div>
+                <div class="ts-dish"><div class="ico">🥘</div><div class="name">Paneer Tikka</div><div class="price">₹220</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHOP -->
+          <div class="template-screen ts-shop" id="screen-shop">
+            <div class="ts-nav">
+              <div class="ts-logo">🛒 FreshMart</div>
+              <div class="ts-nav-links"><span></span><span></span><div class="cart">🛒</div></div>
+            </div>
+            <div class="ts-banner">
+              <div class="ts-banner-txt">
+                <h3>Fresh Deals<br>Every Day</h3>
+                <p>Quality products at unbeatable prices.</p>
+                <div class="ts-cta">Shop Now</div>
+              </div>
+              <div class="ts-banner-img">🏪</div>
+            </div>
+            <div class="ts-products">
+              <div class="ts-product"><div class="ico">🥦</div><div class="name">Vegetables</div><div class="price">From ₹20</div></div>
+              <div class="ts-product"><div class="ico">🥛</div><div class="name">Dairy</div><div class="price">From ₹30</div></div>
+              <div class="ts-product"><div class="ico">🍎</div><div class="name">Fruits</div><div class="price">From ₹50</div></div>
+              <div class="ts-product"><div class="ico">🌾</div><div class="name">Grains</div><div class="price">From ₹40</div></div>
+            </div>
+          </div>
+
+          <!-- SERVICE -->
+          <div class="template-screen ts-service" id="screen-service">
+            <div class="ts-nav">
+              <div class="ts-logo">⚡ ProFix</div>
+              <div class="ts-nav-links"><span></span><span></span><span></span></div>
+            </div>
+            <div class="ts-hero">
+              <h3>Expert Repairs,<br>Guaranteed Work</h3>
+              <p>Fast, reliable, affordable home services across your city.</p>
+              <br>
+              <div class="ts-cta">Get Free Quote</div>
+            </div>
+            <div class="ts-services">
+              <div class="ts-scard"><div class="ico">🔌</div><div class="name">Electrical</div></div>
+              <div class="ts-scard"><div class="ico">🔧</div><div class="name">Plumbing</div></div>
+              <div class="ts-scard"><div class="ico">❄️</div><div class="name">AC Repair</div></div>
+            </div>
+          </div>
+
+          <!-- SALON -->
+          <div class="template-screen ts-salon" id="screen-salon">
+            <div class="ts-nav">
+              <div class="ts-logo">✨ Bella Glam</div>
+              <div class="ts-nav-links"><span></span><span></span><span></span></div>
+            </div>
+            <div class="ts-hero">
+              <div class="ts-hero-txt">
+                <h3>Beauty That<br>Inspires Confidence</h3>
+                <p>Premium salon experience at affordable prices.</p>
+                <div class="ts-cta">Book Appointment</div>
+              </div>
+              <div class="ts-hero-img">💄</div>
+            </div>
+            <div class="ts-services">
+              <div class="ts-svc"><div class="ico">💇</div><div class="lbl">Hair Cut</div><div class="price">₹300+</div></div>
+              <div class="ts-svc"><div class="ico">💅</div><div class="lbl">Nail Art</div><div class="price">₹500+</div></div>
+              <div class="ts-svc"><div class="ico">🧖</div><div class="lbl">Facial</div><div class="price">₹800+</div></div>
+            </div>
+          </div>
+
+          <!-- TUTOR -->
+          <div class="template-screen ts-tutor" id="screen-tutor">
+            <div class="ts-nav">
+              <div class="ts-logo">📚 BrightMinds</div>
+              <div class="ts-nav-links"><span></span><span></span><span></span></div>
+            </div>
+            <div class="ts-hero">
+              <div class="ts-hero-txt">
+                <h3>Learn Smarter,<br>Score Higher</h3>
+                <p>Expert tutors for Class 1–12 & competitive exams.</p>
+                <div class="ts-cta">Enroll Today</div>
+              </div>
+              <div class="ts-hero-img">🎓</div>
+            </div>
+            <div class="ts-subjects">
+              <div class="ts-sub"><div class="ico">➗</div><div class="lbl">Maths</div></div>
+              <div class="ts-sub"><div class="ico">🔬</div><div class="lbl">Science</div></div>
+              <div class="ts-sub"><div class="ico">📖</div><div class="lbl">English</div></div>
+              <div class="ts-sub"><div class="ico">🗺️</div><div class="lbl">SST</div></div>
+            </div>
+          </div>
+
+        </div><!-- /browser-chrome -->
+        <div class="preview-badge">
+          <div class="preview-badge-icon">🚀</div>
+          <div>
+            <strong>Live in 24 hours</strong>
+            <span>Your logo & content included</span>
+          </div>
+        </div>
+      </div><!-- /live-preview -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ HOW IT WORKS ═══════════════════ -->
+<section class="steps-bg" id="how">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag reveal">⚡ Process</div>
+      <h2 class="section-title reveal">Get your website in<br>4 simple steps</h2>
+      <p class="section-sub reveal">No meetings, no delays. Chat on WhatsApp and your site is live in 24 hours.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="steps-connector"></div>
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-num">1</div>
+        <div class="step-icon">🎨</div>
+        <div class="step-title">Choose Template</div>
+        <div class="step-desc">Pick from 6 industry-specific templates — clinic, restaurant, shop, service, salon, or tutor.</div>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-num">2</div>
+        <div class="step-icon">🎭</div>
+        <div class="step-title">Pick a Theme</div>
+        <div class="step-desc">Choose your brand color from 5 premium themes — preview it live on this page.</div>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-num">3</div>
+        <div class="step-icon">💬</div>
+        <div class="step-title">Share Details</div>
+        <div class="step-desc">Send your name, logo, photos & info via WhatsApp or our quick 2-minute form.</div>
+      </div>
+      <div class="step-card reveal reveal-delay-4">
+        <div class="step-num">4</div>
+        <div class="step-icon">🚀</div>
+        <div class="step-title">Pay & Go Live</div>
+        <div class="step-desc">Pay ₹999 via UPI. Your website goes live within 24 hours with a shareable link.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TEMPLATES ═══════════════════ -->
+<section id="templates">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag reveal">🧩 Templates</div>
+      <h2 class="section-title reveal">6 industry-specific<br>templates</h2>
+      <p class="section-sub reveal">Pre-designed with the right sections for your business. Click any template to select it — it'll auto-fill your order form.</p>
+    </div>
+
+    <!-- Filter buttons -->
+    <div class="templates-filter">
+      <button class="filter-btn active" onclick="filterTemplates('all', this)">All Templates</button>
+      <button class="filter-btn" onclick="filterTemplates('health', this)">Health & Care</button>
+      <button class="filter-btn" onclick="filterTemplates('food', this)">Food & Dining</button>
+      <button class="filter-btn" onclick="filterTemplates('retail', this)">Retail & Shop</button>
+      <button class="filter-btn" onclick="filterTemplates('service', this)">Services</button>
+      <button class="filter-btn" onclick="filterTemplates('education', this)">Education</button>
+    </div>
+
+    <div class="templates-grid" id="templatesGrid">
+
+      <!-- Clinic -->
+      <div class="template-card reveal" data-template="clinic" data-cat="health" onclick="selectTemplate(this)">
+        <div class="template-check">✓</div>
+        <div class="template-preview tp-clinic">
+          <span class="tp-emoji">🏥</span>
+        </div>
+        <div class="template-info">
+          <div class="template-name">Clinic / Doctor</div>
+          <div class="template-meta">For hospitals, clinics, dentists, labs & pharmacies</div>
+          <div class="template-features">
+            <span class="feature-chip">Appointment form</span>
+            <span class="feature-chip">Services list</span>
+            <span class="feature-chip">Doctor profile</span>
+            <span class="feature-chip">Location map</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-card-actions">
+            <span class="template-select-btn" onclick="event.stopPropagation(); selectTemplate(this.closest('.template-card'))">Select template</span>
+            <button class="tpl-demo-btn" onclick="event.stopPropagation(); openTemplateModal('clinic')">View Demo</button>
+          </div>
+          <span class="template-popular">⭐ Popular</span>
+        </div>
+      </div>
+
+      <!-- Restaurant -->
+      <div class="template-card reveal reveal-delay-1" data-template="restaurant" data-cat="food" onclick="selectTemplate(this)">
+        <div class="template-check">✓</div>
+        <div class="template-preview tp-restaurant">
+          <span class="tp-emoji" style="filter:drop-shadow(0 4px 12px rgba(0,0,0,0.4))">🍛</span>
+        </div>
+        <div class="template-info">
+          <div class="template-name">Restaurant / Café</div>
+          <div class="template-meta">For restaurants, cafés, tiffin services & bakeries</div>
+          <div class="template-features">
+            <span class="feature-chip">Menu showcase</span>
+            <span class="feature-chip">Table booking</span>
+            <span class="feature-chip">Food gallery</span>
+            <span class="feature-chip">WhatsApp order</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-card-actions">
+            <span class="template-select-btn" onclick="event.stopPropagation(); selectTemplate(this.closest('.template-card'))">Select template</span>
+            <button class="tpl-demo-btn" onclick="event.stopPropagation(); openTemplateModal('restaurant')">View Demo</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shop -->
+      <div class="template-card reveal reveal-delay-2" data-template="shop" data-cat="retail" onclick="selectTemplate(this)">
+        <div class="template-check">✓</div>
+        <div class="template-preview tp-shop">
+          <span class="tp-emoji">🛍️</span>
+        </div>
+        <div class="template-info">
+          <div class="template-name">Shop / Store</div>
+          <div class="template-meta">For retail, fashion, electronics & grocery stores</div>
+          <div class="template-features">
+            <span class="feature-chip">Product showcase</span>
+            <span class="feature-chip">Category grid</span>
+            <span class="feature-chip">WhatsApp buy</span>
+            <span class="feature-chip">Offers section</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-card-actions">
+            <span class="template-select-btn" onclick="event.stopPropagation(); selectTemplate(this.closest('.template-card'))">Select template</span>
+            <button class="tpl-demo-btn" onclick="event.stopPropagation(); openTemplateModal('shop')">View Demo</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service Business -->
+      <div class="template-card reveal reveal-delay-3" data-template="service" data-cat="service" onclick="selectTemplate(this)">
+        <div class="template-check">✓</div>
+        <div class="template-preview tp-service">
+          <span class="tp-emoji" style="filter:drop-shadow(0 4px 12px rgba(0,0,0,0.5))">🔧</span>
+        </div>
+        <div class="template-info">
+          <div class="template-name">Service Business</div>
+          <div class="template-meta">For plumbers, electricians, contractors & agencies</div>
+          <div class="template-features">
+            <span class="feature-chip">Services list</span>
+            <span class="feature-chip">Testimonials</span>
+            <span class="feature-chip">Quote form</span>
+            <span class="feature-chip">Portfolio</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-card-actions">
+            <span class="template-select-btn" onclick="event.stopPropagation(); selectTemplate(this.closest('.template-card'))">Select template</span>
+            <button class="tpl-demo-btn" onclick="event.stopPropagation(); openTemplateModal('service')">View Demo</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Salon -->
+      <div class="template-card reveal reveal-delay-1" data-template="salon" data-cat="service" onclick="selectTemplate(this)">
+        <div class="template-check">✓</div>
+        <div class="template-preview tp-salon">
+          <span class="tp-emoji">💄</span>
+        </div>
+        <div class="template-info">
+          <div class="template-name">Salon / Spa / Beauty</div>
+          <div class="template-meta">For salons, spas, beauty parlours & wellness centres</div>
+          <div class="template-features">
+            <span class="feature-chip">Service menu</span>
+            <span class="feature-chip">Booking form</span>
+            <span class="feature-chip">Photo gallery</span>
+            <span class="feature-chip">Offers & packages</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-card-actions">
+            <span class="template-select-btn" onclick="event.stopPropagation(); selectTemplate(this.closest('.template-card'))">Select template</span>
+            <button class="tpl-demo-btn" onclick="event.stopPropagation(); openTemplateModal('salon')">View Demo</button>
+          </div>
+          <span class="template-popular" style="background:#be185d">✨ New</span>
+        </div>
+      </div>
+
+      <!-- Tutor / School -->
+      <div class="template-card reveal reveal-delay-2" data-template="tutor" data-cat="education" onclick="selectTemplate(this)">
+        <div class="template-check">✓</div>
+        <div class="template-preview tp-tutor">
+          <span class="tp-emoji" style="filter:drop-shadow(0 4px 16px rgba(0,0,0,0.4))">🎓</span>
+        </div>
+        <div class="template-info">
+          <div class="template-name">Tutor / School / Academy</div>
+          <div class="template-meta">For tutors, coaching centres, music & dance schools</div>
+          <div class="template-features">
+            <span class="feature-chip">Course list</span>
+            <span class="feature-chip">Enrolment form</span>
+            <span class="feature-chip">Faculty profiles</span>
+            <span class="feature-chip">Results showcase</span>
+          </div>
+        </div>
+        <div class="template-footer">
+          <div class="template-card-actions">
+            <span class="template-select-btn" onclick="event.stopPropagation(); selectTemplate(this.closest('.template-card'))">Select template</span>
+            <button class="tpl-demo-btn" onclick="event.stopPropagation(); openTemplateModal('tutor')">View Demo</button>
+          </div>
+          <span class="template-popular" style="background:#1d4ed8">✨ New</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ THEMES ═══════════════════ -->
+<section class="themes-bg" id="themes">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag reveal">🎨 Color Themes</div>
+      <h2 class="section-title reveal">Choose your<br>brand color</h2>
+      <p class="section-sub reveal">Five professional color themes. Click any to preview it live across the entire page.</p>
+    </div>
+    <div class="themes-grid">
+      <div class="theme-card selected reveal" onclick="switchTheme(this,'','Royal Blue')" style="--theme-color:#2563eb">
+        <div class="theme-check" style="background:#2563eb">✓</div>
+        <div class="theme-swatch" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #7c3aed 100%)"></div>
+        <div class="theme-label">
+          <div class="theme-name">Royal Blue</div>
+          <div class="theme-use">Clinics, finance, trust</div>
+        </div>
+      </div>
+      <div class="theme-card reveal reveal-delay-1" onclick="switchTheme(this,'theme-green','Fresh Green')" style="--theme-color:#16a34a">
+        <div class="theme-check" style="background:#16a34a">✓</div>
+        <div class="theme-swatch" style="background: linear-gradient(135deg, #16a34a, #0d9488)"></div>
+        <div class="theme-label">
+          <div class="theme-name">Fresh Green</div>
+          <div class="theme-use">Shops, organic, nature</div>
+        </div>
+      </div>
+      <div class="theme-card reveal reveal-delay-2" onclick="switchTheme(this,'theme-blackgold','Black Gold')" style="--theme-color:#b45309">
+        <div class="theme-check" style="background:#b45309">✓</div>
+        <div class="theme-swatch" style="background: linear-gradient(135deg, #1c1c1e 0%, #2d1a00 50%, #b45309 100%)"></div>
+        <div class="theme-label">
+          <div class="theme-name">Black Gold</div>
+          <div class="theme-use">Premium, luxury, boutique</div>
+        </div>
+      </div>
+      <div class="theme-card reveal reveal-delay-3" onclick="switchTheme(this,'theme-orange','Spice Orange')" style="--theme-color:#ea580c">
+        <div class="theme-check" style="background:#ea580c">✓</div>
+        <div class="theme-swatch" style="background: linear-gradient(135deg, #ea580c, #dc2626)"></div>
+        <div class="theme-label">
+          <div class="theme-name">Spice Orange</div>
+          <div class="theme-use">Food, energy, restaurants</div>
+        </div>
+      </div>
+      <div class="theme-card reveal reveal-delay-4" onclick="switchTheme(this,'theme-rose','Rose Red')" style="--theme-color:#e11d48">
+        <div class="theme-check" style="background:#e11d48">✓</div>
+        <div class="theme-swatch" style="background: linear-gradient(135deg, #e11d48, #9f1239)"></div>
+        <div class="theme-label">
+          <div class="theme-name">Rose Red</div>
+          <div class="theme-use">Salons, fashion, beauty</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ BEFORE / AFTER ═══════════════════ -->
+<section class="compare-section">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag reveal">🔄 The Difference</div>
+      <h2 class="section-title reveal">Why WebCraft vs<br>the alternatives?</h2>
+      <p class="section-sub reveal">See what you're getting for ₹999 compared to what most businesses settle for.</p>
+    </div>
+    <div class="compare-wrap">
+      <div class="compare-card reveal">
+        <div class="compare-label before">❌ Without a Website</div>
+        <div class="compare-content">
+          <ul class="compare-list">
+            <li><span class="ico">😰</span> Customers can't find you on Google</li>
+            <li><span class="ico">📲</span> Sharing address on WhatsApp every time</li>
+            <li><span class="ico">🤷</span> No way to show services or pricing</li>
+            <li><span class="ico">⏱️</span> Missing out on 24/7 customer inquiries</li>
+            <li><span class="ico">🏆</span> Competitors with websites win the trust</li>
+            <li><span class="ico">💸</span> Spending ₹5,000–₹15,000 for basic sites</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compare-card reveal reveal-delay-1">
+        <div class="compare-label after">✅ With WebCraft at ₹999</div>
+        <div class="compare-content">
+          <ul class="compare-list">
+            <li><span class="ico">🔍</span> Shareable link & basic Google presence</li>
+            <li><span class="ico">🌐</span> Professional website to share everywhere</li>
+            <li><span class="ico">📋</span> Full services, gallery & pricing page</li>
+            <li><span class="ico">🤝</span> WhatsApp button for instant inquiries</li>
+            <li><span class="ico">💼</span> Instant credibility & trust with customers</li>
+            <li><span class="ico">💰</span> All of this for a one-time ₹999 only</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PRICING ═══════════════════ -->
+<section id="pricing">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag reveal">💰 Pricing</div>
+      <h2 class="section-title reveal">Simple, honest pricing.</h2>
+      <p class="section-sub reveal">No upsells, no subscriptions, no surprises. Pick your plan and go live.</p>
+    </div>
+    <div class="pricing-wrapper">
+
+      <!-- Basic -->
+      <div class="pricing-card reveal">
+        <div class="pricing-plan-name">Starter</div>
+        <div class="pricing-price"><sup>₹</sup>999</div>
+        <div class="pricing-period">One-time · No monthly fees</div>
+        <div class="pricing-original">Market price: ₹5,000–₹8,000</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Responsive mobile-first website</li>
+          <li><span class="check">✓</span> Industry-specific template</li>
+          <li><span class="check">✓</span> Custom color theme & branding</li>
+          <li><span class="check">✓</span> WhatsApp button integration</li>
+          <li><span class="check">✓</span> Basic SEO (Google-ready)</li>
+          <li><span class="check">✓</span> Free Netlify hosting</li>
+          <li><span class="check">✓</span> Delivered within 24 hours</li>
+          <li><span class="check">✓</span> 7-day free revision support</li>
+        </ul>
+        <a href="https://wa.me/918494040471?text=Hi%20WebCraft%2C%20I%20want%20the%20Starter%20plan%20for%20%E2%82%B9999." target="_blank" class="btn btn-outline" style="width:100%;justify-content:center">Order Starter →</a>
+      </div>
+
+      <!-- Pro — Featured -->
+      <div class="pricing-card featured reveal reveal-delay-1">
+        <div class="pricing-badge">⭐ Most Popular</div>
+        <div class="pricing-plan-name">Pro</div>
+        <div class="pricing-price"><sup>₹</sup>1,499</div>
+        <div class="pricing-period">One-time · No monthly fees</div>
+        <div class="pricing-original">Market price: ₹10,000–₹15,000</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Everything in Starter</li>
+          <li><span class="check">✓</span> Custom domain setup (e.g. yourbiz.com)</li>
+          <li><span class="check">✓</span> Contact / enquiry form with email alerts</li>
+          <li><span class="check">✓</span> Google Maps integration</li>
+          <li><span class="check">✓</span> Instagram & social media links</li>
+          <li><span class="check">✓</span> Google Analytics setup</li>
+          <li><span class="check">✓</span> 30-day revision support</li>
+          <li><span class="check">✓</span> Priority 12-hour delivery</li>
+        </ul>
+        <a href="https://wa.me/918494040471?text=Hi%20WebCraft%2C%20I%20want%20the%20Pro%20plan%20for%20%E2%82%B91499." target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;margin-bottom:10px">💬 Order Pro on WhatsApp</a>
+        <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center">Fill Order Form</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SOCIAL PROOF ═══════════════════ -->
+<section class="proof-bg">
+  <div class="container">
+    <div class="proof-inner">
+      <div class="section-tag">📊 Results</div>
+      <h2 class="section-title">Trusted by small businesses<br>across India</h2>
+      <p class="section-sub">From Delhi to Kochi — 500+ businesses are already online with WebCraft.</p>
+      <div class="stats-row">
+        <div class="stat-item reveal"><div class="stat-num" data-count="500">0</div><div class="stat-label">Websites Delivered</div></div>
+        <div class="stat-item reveal reveal-delay-1"><div class="stat-num">24h</div><div class="stat-label">Average Delivery Time</div></div>
+        <div class="stat-item reveal reveal-delay-2"><div class="stat-num">4.9★</div><div class="stat-label">Average Customer Rating</div></div>
+        <div class="stat-item reveal reveal-delay-3"><div class="stat-num">₹999</div><div class="stat-label">Starting Price</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TESTIMONIALS ═══════════════════ -->
+<section>
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag reveal">💬 Reviews</div>
+      <h2 class="section-title reveal">What our customers say</h2>
+    </div>
+    <div class="testimonials-wrap">
+      <div class="testimonials-track" id="testimonialsTrack">
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"Got my clinic website in just 18 hours! Patients now book appointments directly. Best ₹999 I've ever spent — pays for itself every week."</p>
+          <div class="t-author"><div class="t-avatar">👨‍⚕️</div><div><div class="t-name">Dr. Rakesh Sharma</div><div class="t-role">General Physician, Jaipur</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"My restaurant gets WhatsApp orders directly from the website now. The food template was perfect. Highly recommended to all restaurant owners!"</p>
+          <div class="t-author"><div class="t-avatar">👩‍🍳</div><div><div class="t-name">Priya Nair</div><div class="t-role">Restaurant Owner, Kochi</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"I was paying ₹800/month for a bad website. WebCraft gave me something 10x better for a one-time ₹999. No brainer for any small business owner."</p>
+          <div class="t-author"><div class="t-avatar">🧑‍💼</div><div><div class="t-name">Arjun Mehta</div><div class="t-role">Electrical Contractor, Pune</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"The salon template is gorgeous! My clients always compliment the website. Got 3 new bookings in the first week through the appointment form alone."</p>
+          <div class="t-author"><div class="t-avatar">💅</div><div><div class="t-name">Anjali Reddy</div><div class="t-role">Salon Owner, Hyderabad</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"As a home tutor, I needed something professional but affordable. WebCraft nailed it. Parents can see my qualifications and results. Enrolments doubled!"</p>
+          <div class="t-author"><div class="t-avatar">👩‍🏫</div><div><div class="t-name">Sneha Kulkarni</div><div class="t-role">Mathematics Tutor, Nashik</div></div></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"Had my grocery store website up in 20 hours. Customers love the WhatsApp order button. Delivery orders went up 40% in the first month. Incredible value!"</p>
+          <div class="t-author"><div class="t-avatar">🏪</div><div><div class="t-name">Suresh Patel</div><div class="t-role">Grocery Store, Ahmedabad</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-controls">
+      <button class="t-btn" onclick="slideTestimonials(-1)">←</button>
+      <div class="t-dots" id="tDots"></div>
+      <button class="t-btn" onclick="slideTestimonials(1)">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ ORDER FORM ═══════════════════ -->
+<section class="form-bg" id="contact">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag reveal">📋 Order Now</div>
+      <h2 class="section-title reveal">Start your website today</h2>
+      <p class="section-sub reveal">Fill the form or chat on WhatsApp — we reply within 30 minutes during business hours.</p>
+    </div>
+    <div class="form-wrap">
+      <div class="form-card reveal">
+        <div class="form-title">📝 Quick Order Form</div>
+        <form id="orderForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" placeholder="Rajesh Kumar" required/>
+            </div>
+            <div class="form-group">
+              <label>Phone / WhatsApp *</label>
+              <input type="tel" placeholder="+91 98765 43210" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Business Name *</label>
+            <input type="text" placeholder="Sharma Clinic / Taste of India" required/>
+          </div>
+          <div class="form-group">
+            <label>Business Type *</label>
+            <select id="businessTypeSelect" required>
+              <option value="">Select template…</option>
+              <option>Clinic / Hospital / Doctor</option>
+              <option>Restaurant / Café / Food</option>
+              <option>Shop / Store / Retail</option>
+              <option>Service Business</option>
+              <option>Salon / Spa / Beauty</option>
+              <option>Tutor / Coaching / Academy</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Plan</label>
+            <select id="planSelect">
+              <option>Starter — ₹999 (Website + Free Hosting)</option>
+              <option>Pro — ₹1,499 (Starter + Custom Domain + More)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Color Theme</label>
+            <select id="themeSelect">
+              <option>Royal Blue (Trust / Clinics)</option>
+              <option>Fresh Green (Shop / Organic)</option>
+              <option>Black Gold (Premium / Luxury)</option>
+              <option>Spice Orange (Food / Energy)</option>
+              <option>Rose Red (Salons / Beauty)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell us about your business</label>
+            <textarea placeholder="What do you offer? Any special requirements? Logo available?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Submit Order →</button>
+          <div class="form-note">🔒 No payment now. We'll contact you via WhatsApp within 30 mins.</div>
+        </form>
+      </div>
+
+      <div class="form-wa-card reveal reveal-delay-1">
+        <div class="wa-icon-big">💬</div>
+        <div class="wa-title">Prefer WhatsApp?</div>
+        <p class="wa-desc">Most customers order directly on WhatsApp. It's faster, easier, and we respond within minutes.</p>
+        <a href="https://wa.me/918494040471?text=Hi%20WebCraft%2C%20I%20need%20a%20website%20for%20my%20business." target="_blank" class="wa-btn-big">
+          <span style="font-size:1.2rem">📲</span> Get Website on WhatsApp
+        </a>
+        <div class="wa-features">
+          <div class="wa-feature"><span>⚡</span> Reply within 30 minutes</div>
+          <div class="wa-feature"><span>🎯</span> Share your logo & photos directly</div>
+          <div class="wa-feature"><span>💳</span> Pay via UPI / GPay / PhonePe</div>
+          <div class="wa-feature"><span>🚀</span> Website live in 24 hours</div>
+          <div class="wa-feature"><span>✏️</span> Free revisions for 7 days</div>
+        </div>
+        <div class="wa-number">
+          WhatsApp us directly:<br>
+          <strong>+91 84940 40471</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FAQ ═══════════════════ -->
+<section class="faq-bg">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-tag reveal">❓ FAQ</div>
+      <h2 class="section-title reveal">Common questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">Do I need any technical knowledge? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Absolutely not. You just send your business details, logo, and photos on WhatsApp. We handle everything — design, coding, and hosting.</div>
+      </div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">What's included in ₹999? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Everything: responsive mobile-first website, your chosen template, color theme, your content, WhatsApp button, basic SEO, and free Netlify hosting. Zero hidden charges.</div>
+      </div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">What's the difference between Starter and Pro? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Starter (₹999) gives you a complete website with free Netlify hosting and a link like yourbusiness.netlify.app. Pro (₹1,499) adds a custom domain (yourbusiness.com), Google Maps, email alerts, analytics, and priority 12-hour delivery.</div>
+      </div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">How will the website be hosted? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Starter websites are deployed free on Netlify with a link like yourbusiness.netlify.app. Pro plan includes custom domain setup. Domain cost (₹800–₹1,200/year) is separate and paid directly to the registrar.</div>
+      </div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">Can I update the website later? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Yes! Starter includes 7-day free revisions; Pro includes 30-day revisions. After that, we offer affordable maintenance at ₹299/change or monthly plans.</div>
+      </div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">How do I pay? <span class="faq-icon">+</span></div>
+        <div class="faq-a">After confirming your order on WhatsApp, you pay via UPI, Google Pay, PhonePe, or bank transfer. We begin work immediately after payment is confirmed.</div>
+      </div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">What if I'm not satisfied? <span class="faq-icon">+</span></div>
+        <div class="faq-a">We offer free revisions within your plan's revision window. We work until you're happy. Customer satisfaction is our top priority — 4.9★ average rating proves it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FINAL CTA ═══════════════════ -->
+<div class="cta-banner">
+  <div class="container">
+    <h2>Your customers are searching<br>online right now.</h2>
+    <p>Be there. Get your professional website in 24 hours for just ₹999.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/918494040471?text=Hi%20WebCraft%2C%20I%20need%20a%20website%20for%20my%20business." target="_blank" class="btn btn-wa btn-lg">💬 Get Website on WhatsApp</a>
+      <a href="#contact" class="btn btn-lg" style="background:rgba(255,255,255,0.1);color:#fff;border:2px solid rgba(255,255,255,0.2)">📋 Fill Order Form</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Web<span>Craft</span></div>
+        <p class="footer-desc">Professional websites for Indian small businesses. Built in 24 hours, delivered with care, priced for everyone.</p>
+        <a href="https://wa.me/918494040471?text=Hi%20WebCraft%2C%20I%20need%20a%20website%20for%20my%20business." target="_blank" class="footer-wa">💬 Chat on WhatsApp</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#how">How it Works</a></li>
+          <li><a href="#templates">Templates</a></li>
+          <li><a href="#themes">Themes</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Order Now</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/918494040471" target="_blank">WhatsApp: +91 84940 40471</a></li>
+          <li><a href="mailto:hello@webcraft.in">hello@webcraft.in</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><span style="color:rgba(255,255,255,0.35)">Available 9AM – 9PM IST</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 WebCraft. All rights reserved.</span>
+      <span>Made with ❤️ in India · Serving 500+ businesses nationwide</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════ TEMPLATE DEMO MODAL ═══════════════════ -->
+<div class="modal-overlay" id="templateModal" onclick="closeModalOnBg(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title-wrap">
+        <div class="modal-emoji" id="modalEmoji">🏥</div>
+        <div>
+          <div class="modal-title" id="modalTitle">Clinic / Doctor Template</div>
+          <div class="modal-subtitle" id="modalSubtitle">For hospitals, clinics, dentists, labs & pharmacies</div>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeModal()" title="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-preview-col">
+        <div class="modal-preview-browser">
+          <div class="modal-browser-bar">
+            <div class="modal-b-dots"><span></span><span></span><span></span></div>
+            <div class="modal-b-url" id="modalUrl">yourclinic.netlify.app</div>
+          </div>
+          <div class="modal-preview-content" id="modalPreviewContent">
+            <!-- injected dynamically -->
+          </div>
+        </div>
+        <div class="modal-badge-row" style="margin-top:14px" id="modalChips"></div>
+      </div>
+      <div class="modal-info-col">
+        <div>
+          <div class="plan-highlight" id="modalHighlight">✅ Perfect for your business type</div>
+          <div class="modal-features-title">What's included in this template:</div>
+          <ul class="modal-feature-list" id="modalFeatureList"></ul>
+        </div>
+        <div style="background:var(--surface);border-radius:14px;padding:18px">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:0.9rem;margin-bottom:12px;color:var(--text)">💰 Pricing</div>
+          <div style="font-size:0.82rem;color:var(--text-2);line-height:1.7">
+            <strong style="color:var(--text)">Starter — ₹999</strong> · Website + Free hosting (netlify.app link)<br>
+            <strong style="color:var(--text)">Pro — ₹1,499</strong> · + Custom domain, Maps, Analytics, Email alerts
+          </div>
+        </div>
+        <div style="font-size:0.78rem;color:var(--text-3);line-height:1.7;background:var(--accent-light);padding:14px;border-radius:10px;border:1px solid rgba(37,99,235,0.12)">
+          🚀 <strong style="color:var(--accent)">Live in 24 hours.</strong> Send your logo & details on WhatsApp — we handle everything. Free revisions for 7 days.
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn btn-wa" id="modalWaBtn" target="_blank">💬 Order on WhatsApp</a>
+      <a href="#contact" class="btn btn-primary" onclick="closeModal(); selectTemplateByKey(currentModalTemplate)">📋 Fill Order Form</a>
+      <div class="modal-note">🔒 No payment now. We'll WhatsApp you within 30 mins.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY WA -->
+<a href="https://wa.me/918494040471?text=Hi%20WebCraft%2C%20I%20need%20a%20website%20for%20my%20business." target="_blank" class="sticky-wa">
+  <div class="wa-pulse"></div>
+  <span>📲</span>
+  <span class="wa-text">Get Website on WhatsApp</span>
+</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span class="toast-icon">✅</span>
+  <div>
+    <strong>Order received!</strong><br>
+    <span style="font-weight:400;font-size:0.78rem;color:#64748b">We'll WhatsApp you within 30 mins.</span>
+  </div>
+</div>
+
+<!-- ═══════════════════ SCRIPTS ═══════════════════ -->
+<script>
+/* ─── MOBILE NAV ─── */
+function toggleMenu() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  const nav = document.getElementById('mobileNav');
+  if (nav && !nav.contains(e.target) && !e.target.closest('.nav-hamburger')) nav.classList.remove('open');
+});
+
+/* ─── NAV SHADOW ─── */
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').style.boxShadow =
+    window.scrollY > 10 ? '0 4px 32px rgba(15,23,42,0.1)' : 'none';
+});
+
+/* ─── THEME SWITCHER ─── */
+function switchTheme(card, cls, name) {
+  document.querySelectorAll('.theme-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  document.body.className = document.body.className.replace(/theme-\S+/g,'').trim();
+  if (cls) document.body.classList.add(cls);
+  const ts = document.getElementById('themeSelect');
+  if (ts) {
+    [...ts.options].forEach(o => { if (o.text.startsWith(name)) o.selected = true; });
+  }
+}
+
+/* ─── TEMPLATE SELECTOR + FILTER ─── */
+function selectTemplate(card) {
+  document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  const map = {
+    clinic:'Clinic / Hospital / Doctor',
+    restaurant:'Restaurant / Café / Food',
+    shop:'Shop / Store / Retail',
+    service:'Service Business',
+    salon:'Salon / Spa / Beauty',
+    tutor:'Tutor / Coaching / Academy'
+  };
+  const sel = document.getElementById('businessTypeSelect');
+  const t = card.dataset.template;
+  if (sel && map[t]) {
+    [...sel.options].forEach(o => { if (o.text === map[t]) o.selected = true; });
+  }
+  const previewTab = document.querySelector(`.preview-tab[data-screen="${t}"]`);
+  if (previewTab) previewTab.click();
+  // Show toast confirmation
+  showToastMsg(`✅ ${map[t] || 'Template'} selected! Scroll down to order.`);
+}
+
+function selectTemplateByKey(key) {
+  const card = document.querySelector(`.template-card[data-template="${key}"]`);
+  if (card) selectTemplate(card);
+}
+
+function filterTemplates(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.template-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+
+/* ─── LIVE PREVIEW SWITCHER ─── */
+function switchPreview(tab, screenId, url) {
+  document.querySelectorAll('.preview-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.template-screen').forEach(s => s.classList.remove('active'));
+  tab.classList.add('active');
+  const screen = document.getElementById('screen-' + screenId);
+  if (screen) screen.classList.add('active');
+  const urlEl = document.getElementById('previewUrl');
+  if (urlEl) urlEl.textContent = url;
+}
+
+/* ─── TEMPLATE DEMO MODAL ─── */
+let currentModalTemplate = 'clinic';
+
+const TEMPLATE_DATA = {
+  clinic: {
+    emoji: '🏥', title: 'Clinic / Doctor Template',
+    subtitle: 'For hospitals, clinics, dentists, labs & pharmacies',
+    url: 'yourclinic.netlify.app',
+    highlight: '🏥 Most popular for healthcare businesses',
+    features: [
+      'Hero section with appointment booking button',
+      'Services & specialities list with icons',
+      'Doctor profiles with credentials',
+      'Location map & clinic hours',
+      'WhatsApp button for instant appointments',
+      'Patient testimonials section',
+      'Contact form with mobile-friendly design',
+      'Mobile-first, loads fast on 4G'
+    ],
+    chips: ['Appointment form','Services list','Doctor profile','Location map','WhatsApp button'],
+    waMsg: 'Hi WebCraft, I want the Clinic template website for my business.',
+    previewId: 'clinic'
+  },
+  restaurant: {
+    emoji: '🍽️', title: 'Restaurant / Café Template',
+    subtitle: 'For restaurants, cafés, tiffin services & bakeries',
+    url: 'yourrestaurant.netlify.app',
+    highlight: '🍛 Perfect for food businesses & delivery',
+    features: [
+      'Full menu showcase with photos & prices',
+      'WhatsApp order button (instant orders)',
+      'Food gallery / photo carousel',
+      'Table booking / reservation section',
+      'Today\'s specials & offers section',
+      'Opening hours & delivery info',
+      'Location map with directions',
+      'Customer review highlights'
+    ],
+    chips: ['Menu showcase','WhatsApp order','Food gallery','Table booking','Offers section'],
+    waMsg: 'Hi WebCraft, I want the Restaurant template website for my business.',
+    previewId: 'restaurant'
+  },
+  shop: {
+    emoji: '🛍️', title: 'Shop / Store Template',
+    subtitle: 'For retail, fashion, electronics & grocery stores',
+    url: 'yourshop.netlify.app',
+    highlight: '🛒 Drive more sales with product showcase',
+    features: [
+      'Product category grid with images',
+      'Featured products & new arrivals',
+      'WhatsApp "Buy Now" for each product',
+      'Current offers & discount banners',
+      'Store timing & address section',
+      'Customer photos & reviews',
+      'Instagram feed integration (Pro)',
+      'Google Maps to store location'
+    ],
+    chips: ['Product grid','Category filter','WhatsApp buy','Offers banner','Store info'],
+    waMsg: 'Hi WebCraft, I want the Shop/Store template website for my business.',
+    previewId: 'shop'
+  },
+  service: {
+    emoji: '🔧', title: 'Service Business Template',
+    subtitle: 'For plumbers, electricians, contractors & agencies',
+    url: 'yourservice.netlify.app',
+    highlight: '⚡ Get more leads & service calls',
+    features: [
+      'Services list with descriptions & pricing',
+      'Free quote / callback request form',
+      'Work portfolio with before/after photos',
+      'Customer testimonials with ratings',
+      'Service area / coverage map',
+      'WhatsApp instant contact button',
+      'Certifications & credentials section',
+      'Emergency contact highlight'
+    ],
+    chips: ['Services list','Quote form','Portfolio','Testimonials','Service area'],
+    waMsg: 'Hi WebCraft, I want the Service Business template website for my business.',
+    previewId: 'service'
+  },
+  salon: {
+    emoji: '💄', title: 'Salon / Spa Template',
+    subtitle: 'For salons, spas, beauty parlours & wellness centres',
+    url: 'yoursalon.netlify.app',
+    highlight: '✨ Fill your appointment book every week',
+    features: [
+      'Service menu with prices & duration',
+      'Online appointment booking button',
+      'Before/after photo gallery',
+      'Stylists/therapists profiles',
+      'Packages & combo offers section',
+      'WhatsApp instant booking',
+      'Location & salon hours',
+      'Client testimonials & star ratings'
+    ],
+    chips: ['Service menu','Booking form','Photo gallery','Staff profiles','Offers'],
+    waMsg: 'Hi WebCraft, I want the Salon/Spa template website for my business.',
+    previewId: 'salon'
+  },
+  tutor: {
+    emoji: '🎓', title: 'Tutor / Academy Template',
+    subtitle: 'For tutors, coaching centres, music & dance schools',
+    url: 'youracademy.netlify.app',
+    highlight: '📚 Get more students enrolled online',
+    features: [
+      'Course/subject list with details & fees',
+      'Student enrolment / inquiry form',
+      'Faculty & teacher profiles',
+      'Past results & achievements showcase',
+      'Batch timing & schedule section',
+      'WhatsApp enrolment button',
+      'Photo gallery of classes',
+      'Parent testimonials section'
+    ],
+    chips: ['Course list','Enrolment form','Faculty profiles','Results','Batch schedule'],
+    waMsg: 'Hi WebCraft, I want the Tutor/Academy template website for my business.',
+    previewId: 'tutor'
+  }
+};
+
+function openTemplateModal(key) {
+  const d = TEMPLATE_DATA[key];
+  if (!d) return;
+  currentModalTemplate = key;
+
+  document.getElementById('modalEmoji').textContent = d.emoji;
+  document.getElementById('modalTitle').textContent = d.title;
+  document.getElementById('modalSubtitle').textContent = d.subtitle;
+  document.getElementById('modalUrl').textContent = d.url;
+  document.getElementById('modalHighlight').textContent = d.highlight;
+
+  // Feature list
+  const fl = document.getElementById('modalFeatureList');
+  fl.innerHTML = d.features.map(f =>
+    `<li><span class="mcheck">✓</span>${f}</li>`
+  ).join('');
+
+  // Chips
+  const ch = document.getElementById('modalChips');
+  ch.innerHTML = d.chips.map(c =>
+    `<span class="modal-badge">${c}</span>`
+  ).join('');
+
+  // WhatsApp button
+  document.getElementById('modalWaBtn').href =
+    `https://wa.me/918494040471?text=${encodeURIComponent(d.waMsg)}`;
+
+  // Preview — clone the matching screen from the hero
+  const srcScreen = document.getElementById('screen-' + d.previewId);
+  const previewEl = document.getElementById('modalPreviewContent');
+  if (srcScreen) {
+    previewEl.innerHTML = srcScreen.innerHTML;
+    previewEl.className = 'modal-preview-content ' + srcScreen.className.replace('template-screen','').replace('active','').trim();
+    // Copy all classes from srcScreen for CSS to apply
+    const clsList = [...srcScreen.classList].filter(c => c !== 'template-screen' && c !== 'active');
+    previewEl.className = 'modal-preview-content ' + clsList.join(' ');
+  }
+
+  // Open
+  const overlay = document.getElementById('templateModal');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('templateModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOnBg(e) {
+  if (e.target === document.getElementById('templateModal')) closeModal();
+}
+
+// Close modal on Escape key
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ─── TYPING ANIMATION ─── */
+const typingWords = ['Clinics', 'Restaurants', 'Shops', 'Salons', 'Tutors', 'Agencies', 'Freelancers'];
+let twi = 0, tci = 0, tDeleting = false;
+function typeNext() {
+  const word = typingWords[twi];
+  const el = document.getElementById('typedText');
+  if (!el) return;
+  if (!tDeleting) {
+    el.textContent = word.slice(0, ++tci);
+    if (tci === word.length) { tDeleting = true; setTimeout(typeNext, 1800); return; }
+    setTimeout(typeNext, 90);
+  } else {
+    el.textContent = word.slice(0, --tci);
+    if (tci === 0) { tDeleting = false; twi = (twi + 1) % typingWords.length; setTimeout(typeNext, 300); return; }
+    setTimeout(typeNext, 55);
+  }
+}
+typeNext();
+
+/* ─── FAQ TOGGLE ─── */
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ─── TESTIMONIAL CAROUSEL ─── */
+let tSlide = 0;
+const totalSlides = 6;
+let slidesPerView = window.innerWidth <= 640 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+
+function buildDots() {
+  const container = document.getElementById('tDots');
+  if (!container) return;
+  container.innerHTML = '';
+  const pages = Math.ceil(totalSlides / slidesPerView);
+  for (let i = 0; i < pages; i++) {
+    const d = document.createElement('div');
+    d.className = 't-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goToSlide(i);
+    container.appendChild(d);
+  }
+}
+
+function goToSlide(idx) {
+  const track = document.getElementById('testimonialsTrack');
+  if (!track) return;
+  const pages = Math.ceil(totalSlides / slidesPerView);
+  tSlide = Math.max(0, Math.min(idx, pages - 1));
+  const cardWidth = 100 / slidesPerView;
+  track.style.transform = `translateX(-${tSlide * slidesPerView * cardWidth}%)`;
+  document.querySelectorAll('.t-dot').forEach((d, i) => d.classList.toggle('active', i === tSlide));
+}
+
+function slideTestimonials(dir) {
+  const pages = Math.ceil(totalSlides / slidesPerView);
+  goToSlide((tSlide + dir + pages) % pages);
+}
+
+window.addEventListener('resize', () => {
+  slidesPerView = window.innerWidth <= 640 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+  tSlide = 0;
+  buildDots();
+  goToSlide(0);
+  document.querySelectorAll('.testimonial-card').forEach(c => {
+    c.style.minWidth = `calc(${100/slidesPerView}% - ${(slidesPerView-1)*20/slidesPerView}px)`;
+  });
+});
+
+/* ─── COUNTER ANIMATION ─── */
+function animateCounter(el, target) {
+  let start = 0;
+  const duration = 1800;
+  const step = (timestamp) => {
+    if (!start) start = timestamp;
+    const pct = Math.min((timestamp - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - pct, 3);
+    el.textContent = Math.floor(ease * target) + '+';
+    if (pct < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+/* ─── SCROLL REVEAL ─── */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      const countEl = e.target.querySelector('[data-count]');
+      if (countEl && !countEl.dataset.animated) {
+        countEl.dataset.animated = 'true';
+        animateCounter(countEl, parseInt(countEl.dataset.count));
+      }
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ─── TOAST ─── */
+function showToastMsg(msg) {
+  const toast = document.getElementById('toast');
+  const icon = toast.querySelector('.toast-icon');
+  const strong = toast.querySelector('strong');
+  const sub = toast.querySelector('span[style]');
+  if (icon) icon.textContent = '✅';
+  if (strong) strong.textContent = msg;
+  if (sub) sub.textContent = 'Scroll to the order form to complete your order.';
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4000);
+}
+
+/* ─── FORM SUBMIT ─── */
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const inputs = form.querySelectorAll('input, select, textarea');
+  let msg = 'Hi WebCraft, I want to order a website!\n\n';
+  const labels = ['Name', 'Phone', 'Business Name', 'Type', 'Plan', 'Theme', 'Details'];
+  inputs.forEach((inp, i) => { if (inp.value) msg += `${labels[i] || inp.placeholder}: ${inp.value}\n`; });
+  showToastMsg('Order received!');
+  setTimeout(() => window.open(`https://wa.me/918494040471?text=${encodeURIComponent(msg)}`, '_blank'), 1200);
+  const toast = document.getElementById('toast');
+  const sub = toast.querySelector('span[style]');
+  if (sub) sub.textContent = "We'll WhatsApp you within 30 mins.";
+}
+
+/* ─── INIT ─── */
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.testimonial-card').forEach(c => {
+    c.style.minWidth = `calc(${100/slidesPerView}% - ${(slidesPerView-1)*20/slidesPerView}px)`;
+  });
+  buildDots();
+  setInterval(() => slideTestimonials(1), 5000);
+});
+</script>
+</body>
+</html>
